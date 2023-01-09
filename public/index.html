@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GENA</title>
+
+  <link rel="shortcut icon" href="#">
+
+  <!-- import pdf-lib -->
+  <script src="https://unpkg.com/pdf-lib"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- top navigator -->
+    <div class="top-nav">
+
+      <div class="page-title">
+        <div class="logos"><img src="images/logos/IP-white.png" /></div>
+        <div class="logos"><img src="images/logos/FFP-white.png" /></div>
+
+        <div class="logos"><img src="images/logos/IWS-white.png" /></div>
+        <div class="gena"><img src="images/logos/GENA-Logo.png" /></div>
+        <div class="logos"><img src="images/logos/RBO-white.png" /></div>
+        <div class="logos"><img src="images/logos/ITD-white.png" /></div>
+        <div class="logos"><span id="signing-in">signing in...</span></div>
+      </div>
+
+      <div class="top-nav-button">
+        <div class="view hidden" id="nav-button" data-view="nav-button">
+          <div id="new-order-button-div"><button id="new-order-button">new label order</button></div>
+          <div id="remove-delivered-labels-div"><button type="button" onclick="getAllOrders()"
+              id="remove-delivered-button"></button></div>
+          <div><button id="orders-button">current orders</button></div>
+        </div>
+      </div>
+    </div>
+    <!-- END of top navigator -->
+    <div class="main">
+      <!-- -------------------- data-view="sign-in"-------------------- -->
+      <div class="view" id="log-in" data-view="log-in">
+
+        <!-- FIRST ROW -->
+        <div class="row">
+          <div class="full-column">
+            <h2>Welcome! Please sign in.</h2>
+          </div>
+        </div>
+
+        <!-- SECOND ROW -->
+        <div class="row">
+          <div class="full-column">
+            <!-- ==================== FORM ==================== -->
+            <form name="sign-in" id="sign-in">
+              <div>
+                <select name="optone" id="dept" size="1">
+                  <option value="" selected="selected">select department</option>
+                </select>
+              </div>
+              <div>
+                <select name="opttwo" id="staff" size="1">
+                  <option value="" selected="selected">select staff</option>
+                </select>
+              </div>
+              <div>
+                <!-- <label for="password">password</label> -->
+                <input id="password" type="password" maxlength="10" size="10" placeholder="password" required>
+              </div>
+              <div>
+                <!-- <label for=""> -->
+                <div>
+                  <button type="button" id="submit-password">log in</button>
+                </div>
+                <!-- </label>  -->
+              </div>
+            </form>
+            <!-- ==================== end of FORM ==================== -->
+          </div>
+        </div>
+
+        <!-- THIRD ROW -->
+        <div class="row"></div>
+      </div>
+
+      <!-- -------------------- data-view="new-order"-------------------- -->
+      <div class="view hidden" id="new-order" data-view="new-order">
+
+        <!-- FIRST ROW -->
+        <div class="row">
+          <div class="full-column">
+          </div>
+        </div>
+
+        <!-- SECOND ROW -->
+        <div class="row">
+          <div class="full-column">
+
+            <!-- ++++++++++++++++++++ SEARCH BUTTON ++++++++++++++++++++ -->
+
+
+            <div class="search-div">
+              <input class="view" name="search" id="search" value="" />
+              <button onclick="searchFunc()" class="search" name="search-btn" id="search-btn">search labels
+                here</button>
+            </div>
+
+
+            <!-- ==================== FORM ==================== -->
+
+            <form name="order-form" id="order-form">
+              <select class="view" name="optone" id="label-type" size="1">
+                <option value="" selected="selected">select category</option>
+              </select>
+              <select class="view" name="opttwo" id="label-kind" size="1">
+                <option value="" selected="selected">select sub-category</option>
+              </select>
+
+              <div class="view" id="homeoffice">
+                <img src="images/logos/ig-logo.png" frameboard="1" width="336px" height="auto"></iframe>
+              </div>
+
+              <h2 class="view hidden" id="submit-now"></h2>
+
+              <ul id="labels-list"></ul>
+
+              <div>
+                <input id="add-to-order" class="view" type="button" name="add-to-order" value="add labels to order" />
+              </div>
+
+              <!-- <label for="submit-order"> -->
+              <div>
+                <input id="submit-order" type="submit" name="submit-order" value="submit order" />
+              </div>
+              <!-- </label> -->
+
+            </form>
+
+            <div>
+              <iframe id="pdf" style="width: 100%; height: 100%;"></iframe>
+            </div>
+
+            <!-- ==================== end of FORM ==================== -->
+          </div>
+        </div>
+        <!-- THIRD ROW -->
+        <div class="row"></div>
+      </div>
+      <!-- -------------------- data-view="my-order"-------------------- -->
+      <div class="view hidden" id="orders" data-view="orders">
+
+        <!-- FIRST ROW -->
+        <div class="row">
+          <div class="full-column">
+            <!-- <h2>all of your orders...</h2> -->
+          </div>
+        </div>
+
+        <!-- SECOND ROW -->
+        <div>
+          <ul id="entries-list"></ul>
+        </div>
+
+        <!-- THIRD ROW -->
+        <div class="row"></div>
+      </div>
+    </div>
+  </div>
+  <!-- END of container -->
+
+  <script src="js/addorder.js"></script>
+  <script src="js/changeorderstatus.js"></script>
+  <script src="js/currentorders.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/depts.js"></script>
+  <script src="js/docnum/doc0377.js"></script>
+  <script src="js/docnum/doc0378.js"></script>
+  <script src="js/docnum/doc0379.js"></script>
+  <script src="js/docnum/doc0380.js"></script>
+  <script src="js/docnum/doc0381.js"></script>
+  <script src="js/docnum/doc0382.js"></script>
+  <script src="js/docnum/doc0392.js"></script>
+  <script src="js/docnum/doc0393.js"></script>
+  <script src="js/docnum/doc0395.js"></script>
+  <script src="js/docnum/doc0396.js"></script>
+  <script src="js/docnum/doc0417.js"></script>
+  <script src="js/docnum/doc0418.js"></script>
+  <script src="js/docnum/doc0432.js"></script>
+  <script src="js/docnum/doc0433.js"></script>
+  <script src="js/docnum/doc0436.js"></script>
+  <script src="js/docnum/doc0481.js"></script>
+  <script src="js/docnum/doc0482.js"></script>
+  <script src="js/docnum/doc0484.js"></script>
+  <script src="js/docnum/doc0542.js"></script>
+  <script src="js/docnum/doc0543.js"></script>
+  <script src="js/docnum/doc0544.js"></script>
+  <script src="js/docnum/doc0545.js"></script>
+  <script src="js/docnum/doc0546.js"></script>
+  <script src="js/docnum/doc0563.js"></script>
+  <script src="js/getfillable.js"></script>
+  <script src="js/getproduct.js"></script>
+  <script src="js/getlabels.js"></script>
+  <script src="js/labelfams.js"></script>
+  <script src="js/newitem.js"></script>
+  <script src="js/neworder.js"></script>
+  <script src="js/searchfunction.js"></script>
+  <script src="js/signin.js"></script>
+  <script src="js/removedelivered.js"></script>
+
+</body>
+
+</html>
