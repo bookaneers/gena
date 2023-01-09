@@ -1,0 +1,33 @@
+.hidden {
+    display: none !important;
+}
+  
+.container {
+    /* max-width: 720px; */
+    margin: 0 auto;
+    /* padding: 0 1.5rem; */
+}
+
+/* @media screen and (max-width: 1080px) and (orientation: landscape) { */
+@media screen and (max-width: 834px) {
+  body {
+      color: red;
+  }
+
+  /* new orders screen */
+  .labels-list {
+    display: flex;
+  }
+  .list-one-fourth-column {
+    flex-wrap: wrap;
+  }
+
+  /* current orders screen */
+  .listed-item {
+    width: 25%;
+  }
+
+  .list-flexible-column{
+    flex-wrap: wrap;
+  }
+}

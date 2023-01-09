@@ -1,0 +1,40 @@
+{
+  "name": "gena",
+  "version": "1.0.0",
+  "description": "Label Generator Application for Inventive Group",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
+  },
+  "engines": {
+    "node": "14.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bookaneers/gena.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bookaneers/gena/issues"
+  },
+  "homepage": "https://github.com/bookaneers/gena#readme",
+  "dependencies": {
+    "config": "^3.3.8",
+    "cors": "^2.8.5",
+    "download": "^8.0.0",
+    "express": "^4.17.3",
+    "joi": "^13.1.0",
+    "joi-objectid": "^4.0.2",
+    "mongoose": "^6.7.2",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
